@@ -1,23 +1,66 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>               
     </h:head>
     <h:body>
-        Hello from Facelets        
-        #{indexController.world}
-        <br></br>
+
+        #{indexController.titulo}
+        <br></br><br></br>
+
         <h:form>
-            <h:inputText value="${indexController.incrementar}"></h:inputText>
-            ${1 > (4/2)}
+            <h:outputLabel value="Cedula: "></h:outputLabel>
+            <h:inputText value="#{indexController.cedula}"></h:inputText>
+            <br></br>
+            <br></br>
+            <h:outputLabel value="Nombres: "></h:outputLabel>
+            <h:inputText value="#{indexController.nombre}"></h:inputText>
+            <br></br>
+            <br></br>
+            <h:outputLabel value="Apellidos: "></h:outputLabel>
+            <h:inputText value="#{indexController.apellido}"></h:inputText>
+            <br></br>
+            <br></br>
+            <h:outputLabel value="Fecha de Nacimiento (Dia-Mes-Año): "></h:outputLabel>
+            <h:inputText value="#{indexController.fechaNac}">
+                <f:convertDateTime pattern="dd-MM-yyyy" />
+            </h:inputText>
+            <br></br>
+            <br></br>
+            
+            <h:outputLabel value="Nivel de estudio: "></h:outputLabel>
+            <h:selectOneMenu value="#{indexController.nivelEstudio}">
+                <f:selectItems value="#{indexController.seleccionEstudio}"/>
+            </h:selectOneMenu>
+           
+                        
+            <br></br>
+            <br></br>
+            <h:outputLabel value="Idiomas: "></h:outputLabel>
+            
+            <h:selectManyCheckbox  id="idioma" value="#{indexController.idiomas}" > 
+                <f:selectItems value="#{indexController.seleccionIdioma}"/>                               		                 
+            </h:selectManyCheckbox>
             
             <br></br>
-            <h:commandButton actionListener="#{indexController.eventoClick()}" value="Incrementar" ></h:commandButton>
-
-            <h:selectOneListbox></h:selectOneListbox>
+            <br></br>
+            <h:outputLabel value="# Dias Trabajados: "></h:outputLabel>
+            <h:inputText value="#{indexController.numDiasT}"></h:inputText>
             
+            <br></br>
+            <br></br>
+            <h:outputLabel value="Sueldo Base: "></h:outputLabel>
+            <h:inputText value="#{indexController.sueldoBase}"></h:inputText>
+            
+            <br></br><br></br><br></br><br></br><br></br>
+
+            <h:commandButton actionListener="#{indexController.eventoClick()}" value="Calcular" ></h:commandButton>
+            <br></br>
+            
+
         </h:form>
 
 
